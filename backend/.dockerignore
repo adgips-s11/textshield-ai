@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Local environment
+.env
+
+# Git
+.git/
+.gitignore
+
+# Dev tools
+.vscode/
+.idea/
+
+# Node (in case frontend is in same repo)
+node_modules/
+.next/
+
+# Feedback DB (rebuilt fresh in container; persisted via Render disk)
+app/feedback.db

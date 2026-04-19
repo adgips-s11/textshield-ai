@@ -1,0 +1,16 @@
+# ── Web framework ─────────────────────────────────────────────────────────────
+fastapi
+uvicorn
+python-multipart
+
+# ── Validation / settings ─────────────────────────────────────────────────────
+pydantic
+pydantic-settings
+
+# ── Machine learning ──────────────────────────────────────────────────────────
+scikit-learn
+pandas
+numpy
+scipy
+joblib
+threadpoolctl

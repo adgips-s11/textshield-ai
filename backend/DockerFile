@@ -1,0 +1,28 @@
+FROM python:3.11-slim AS builder
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+RUN mkdir -p app/models datasets && \
+    cp spam_dataset.csv datasets/spam_dataset.csv 2>/dev/null || true && \
+    python train_models.py
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY --from=builder /app/app/models ./app/models
+COPY . .
+
+RUN mkdir -p app datasets
+
+EXPOSE 8000
+
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}

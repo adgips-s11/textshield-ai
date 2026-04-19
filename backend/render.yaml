@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: textshield-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+
+    envVars:
+      - key: FRONTEND_URL
+        sync: false
+      - key: RELOAD
+        value: "false"
+      - key: PYTHON_VERSION
+        value: "3.11"
+
+    disk:
+      name: textshield-data
+      mountPath: /app/app
+      sizeGB: 1
